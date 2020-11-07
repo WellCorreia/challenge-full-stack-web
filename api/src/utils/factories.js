@@ -4,6 +4,9 @@ const { factory } = require('factory-girl');
 
 const { Student } = require('../app/models');
 
+/**
+ * Factory Student
+ */
 factory.define('Student', Student, {
   academic_record: generateCpf(),
   name: faker.name.findName(),

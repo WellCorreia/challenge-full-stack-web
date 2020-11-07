@@ -4,6 +4,12 @@ const ErrorService = require('../service/ErrorService')
 const HTTP = require('../../constants/http')
 
 class StudentController {
+    /**
+     * Method create student
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async store(req, res, next) {
         try {
             const { body } = req;
@@ -22,6 +28,12 @@ class StudentController {
         }
     }
 
+    /**
+     * Method update
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async update(req, res, next) {
         try {
             const { id } = req.params;
@@ -42,6 +54,12 @@ class StudentController {
         }
     }
 
+    /**
+     * Method to remove a student
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async destroy(req, res, next) {
         try {
             const { id } = req.params;
@@ -58,7 +76,12 @@ class StudentController {
             return next(err);
         }
     }
-
+    /**
+     * Method to find a student
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async get(req, res, next) {
         try {
             const { id } = req.params;
@@ -78,6 +101,12 @@ class StudentController {
         }
     }
 
+    /**
+     * Method to return all students
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async index(req, res, next) {
         try {
             const response = await StudentService.getAll();

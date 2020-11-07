@@ -1,5 +1,6 @@
 const { Student } = require('../models');
 const Response = require('../../constants/response');
+const StudentRepository = require('../repositories/student');
 
 class StudentService {
   constructor() {
@@ -7,19 +8,16 @@ class StudentService {
   }
 
   /**
-   * Método responsável por salvar um student
+   * Method responsible for saving a student
    * @param {*} body 
    */
   async store(body) {
-    let student = await this.checkCPF(body.cpf);
-
-    if (!student) {
-      student = await this.checkAcademicRecord(body.academic_record); 
-    }
+    
+    const student = await StudentRepository.findStudent(body.cpf, body.email, body.academic_record);
 
     if (!student) {
       return {
-        student: await this.student.create({ ...body }),
+        student: await StudentRepository.create(body),
         ...Response.created,
       }
     }
@@ -28,17 +26,17 @@ class StudentService {
   }
 
   /**
-   * Método responsável por receber o um objeto student e alterar o registro
+   * Method responsible for receiving a student object and changing the record
    * @param {*} body 
    */
   async update(body) {
-    const student = await this.student.findByPk(body.id);
+    const student = await StudentRepository.find(body.id);
 
     if (!student) {
       return Response.notFound;
     }
 
-    const studentAtt = await student.update({ ...body });
+    const studentAtt = await StudentRepository.update(body);
 
     return {
       student: studentAtt,
@@ -47,27 +45,11 @@ class StudentService {
   }
 
   /**
-   * Método responsável por buscar um student pelo Academic Record
-   * @param {*} academic_record 
-   */
-  checkAcademicRecord(academic_record) {
-    return this.student.findOne({ where: { academic_record } });
-  }
-
-  /**
-   * Método responsável por buscar um student pelo CPF
-   * @param {*} cpf 
-   */
-  checkCPF(cpf) {
-    return this.student.findOne({ where: { cpf } });
-  }
-
-  /**
-   * Método responsável por retornar um student
+   * Method responsible for returning a student
    * @param {*} id 
    */
   async get(id) {
-    const student = await this.student.findByPk(id);
+    const student = await StudentRepository.find(id);
 
     if (!student) {
       return Response.notFound;
@@ -80,10 +62,10 @@ class StudentService {
   }
 
   /**
-   * Métoto responsável por retornar todos os students
+   * Method responsible for returning all students
    */
   async getAll() {
-    const student = await this.student.findAll();
+    const student = await StudentRepository.getAll();
 
     if (!student) {
       return Response.notFound;
@@ -96,17 +78,17 @@ class StudentService {
   }
 
   /**
-   * Método responsável por deletar um student
+   * Method responsible for remove a student
    * @param {*} id 
    */
   async destroy(id) {
-    const student = await this.student.findByPk(id)
+    const student = await StudentRepository.find(id)
 
     if (!student) {
       return Response.notFound;
     }
 
-    await student.destroy();
+    await StudentRepository.destroy(student);
 
     return Response.deleted;
   }
