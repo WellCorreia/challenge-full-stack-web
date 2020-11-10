@@ -1,43 +1,58 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
-      <v-sheet
-        color="grey lighten-4"
-        class="pa-4"
+    <!-- <nav-bar/> -->
+    <v-navigation-drawer permanent app>
+        <v-img
+        max-height="150"
+        max-width="250"
+        src="../../assets/logo-grupoa.png"
+      ></v-img>
+
+      <v-divider/>
+
+        <div align="center" class="modulo">
+          Módulo Acadêmico
+        </div>
+
+      <v-divider/>
+      <v-list
+        shaped
       >
-        <v-avatar
-          class="mb-4"
-          color="grey darken-1"
-          size="64"
-        ></v-avatar>
+        <v-list-item-group
+          v-model="selectedItem"
+          color="primary"
+        >
+          <v-list-item
+            v-for="(item, i) in links"
+            :key="i"
+          >
+            <v-list-item-icon>
+              <v-icon middle v-text="item.icon"></v-icon>
+            </v-list-item-icon>
 
-        <div>john@vuetifyjs.com</div>
-      </v-sheet>
-
-      <v-divider></v-divider>
-      <v-list>
-        <v-list-item v-for="item in links" :key="item.icon" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+            <v-list-item-content @click="$router.push({ name: 'student', params: {} })">
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
+
     </v-navigation-drawer>
-
     <router-view/>
-
   </v-app>
 </template>
 
 <script>
+// import NavBar from './NavBar.vue'
+
 export default {
+  name: 'SideBar',
+  components: {
+    // NavBar
+  },
   data: () => ({
-    cards: ['Today', 'Yesterday'],
-    drawer: null,
+    drawer: false,
+    selectedItem: 0,
     links: [
       {
         icon: 'mdi-account',
@@ -48,3 +63,16 @@ export default {
   })
 }
 </script>
+<style>
+
+.modulo {
+  background-color: #999999;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+}
+font-menu {
+  font-size: 20px;
+}
+
+</style>
