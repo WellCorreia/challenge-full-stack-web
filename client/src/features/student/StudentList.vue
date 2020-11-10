@@ -49,6 +49,8 @@
         </v-data-table>
       </v-card>
     </v-container>
+    <confirm-dialog ref="confirm"/>
+    <info-dialog ref="info"/>
   </v-main>
 </template>
 
@@ -56,6 +58,8 @@
 
 // import Vue from 'vue'
 import TitleBar from '@/features/components/TitleBar'
+import ConfirmDialog from '@/components/ConfirmDialog'
+import InfoDialog from '@/components/InfoDialog'
 import { mapActions, mapState } from 'vuex'
 // import VueSweetalert2 from 'vue-sweetalert2'
 
@@ -64,7 +68,9 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'StudentList',
   components: {
-    TitleBar
+    TitleBar,
+    ConfirmDialog,
+    InfoDialog
   },
   data () {
     return {
@@ -113,22 +119,27 @@ export default {
       this.$router.push({ name: 'student-form', params: { id: item.id } })
     },
 
-    deleteItem (item) {
-      // Vue.swal.fire({
-      //   title: 'Deseja excluir o aluno?',
-      //   showDenyButton: true,
-      //   denyButtonText: 'Cancelar',
-      //   confirmButtonText: 'Excluir'
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-      //     this.ActionDeleteStudent({ id: item.id }).then(() => {
-      //       if (this.is_deleted.code === undefined) {
-      //         Vue.swal.fire('Excluido', '', 'success')
-      //         window.history.go()
-      //       }
-      //     })
-      //   }
-      // })
+    async deleteItem (item) {
+      await this.$refs.confirm.open(
+        'Deletar',
+        'Deseja deletar o registro deste aluno?',
+        null,
+        null,
+        'Excluir'
+      ).then((response) => {
+        if (response) {
+          this.ActionDeleteStudent({ id: item.id }).then(async () => {
+            if (this.is_deleted.code === undefined) {
+              await this.$refs.info.open(
+                'Excluido',
+                'Registro removido com sucesso!',
+                null
+              )
+              window.history.go()
+            }
+          })
+        }
+      })
     }
   }
 }
