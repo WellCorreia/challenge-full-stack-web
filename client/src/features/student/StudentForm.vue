@@ -9,7 +9,7 @@
           v-model="valid"
           lazy-validation
           >
-            <form-student :resource="resource"/>
+            <form-student :resource="resource" :isEdit="isEdit"/>
             <v-layout offset-md-7>
               <v-flex col-md-6 >
                 <v-btn
@@ -37,28 +37,29 @@
           </v-form>
       </v-card>
     </v-container>
+    <info-dialog ref="info"/>
   </v-main>
 </template>
 
 <script type="module">
+
+import InfoDialog from '@/components/InfoDialog'
 import { mapActions, mapState } from 'vuex'
 import { VueMaskDirective } from 'v-mask'
 import { cpf } from 'cpf-cnpj-validator'
-
-// import VueSweetalert2 from 'vue-sweetalert2'
 
 import Vue from 'vue'
 import TitleBar from '@/features/components/TitleBar'
 import FormStudent from '@/features/components/FormStudent'
 
 Vue.directive('mask', VueMaskDirective)
-// Vue.use(VueSweetalert2)
 
 export default {
   name: 'StudentForm',
   components: {
     TitleBar,
-    FormStudent
+    FormStudent,
+    InfoDialog
   },
   data () {
     return {
@@ -96,12 +97,12 @@ export default {
     /**
      * Método responsável por validar o formulário antes de salvar.
      */
-    beforeSave () {
+    async beforeSave () {
       if (!this.$refs.form.validate()) {
         return false
       }
       if (!cpf.isValid(this.resource.cpf)) {
-        // Vue.swal.fire('Informe um CPF válido.')
+        await this.$refs.info.open('Falha', 'Informe um CPF válido.', null)
         return false
       }
       return true
@@ -110,41 +111,21 @@ export default {
     save () {
       if (this.beforeSave()) {
         if (!this.isEdit) {
-          this.ActionCreateStudent(this.resource).then(() => {
+          this.ActionCreateStudent(this.resource).then(async () => {
             if (this.is_created.status === 201) {
-              // Vue.swal.fire({
-              //   icon: 'success',
-              //   title: 'Salvo',
-              //   text: 'Salvo com sucesso!'
-              // })
+              await this.$refs.info.open('Salvo', 'Salvo com sucesso!', null)
             } else if (this.is_created.body.errorType === 'found') {
-              // Vue.swal.fire({
-              //   icon: 'error',
-              //   title: 'Error',
-              //   text: 'Dados já registrados para outro aluno!'
-              // })
+              await this.$refs.info.open('Erro', 'Dados já registrados para outro aluno!', null)
             } else {
-              // Vue.swal.fire({
-              //   icon: 'error',
-              //   title: 'Error',
-              //   text: 'Falha ao salvar o aluno!'
-              // })
+              await this.$refs.info.open('Salvo', 'Falha ao salvar o aluno!', null)
             }
           })
         } else {
-          this.ActionEditStudent(this.resource).then(() => {
+          this.ActionEditStudent(this.resource).then(async () => {
             if (this.is_edited.status === 200) {
-              // Vue.swal.fire({
-              //   icon: 'success',
-              //   title: 'Salvo',
-              //   text: 'Atualizado com sucesso!'
-              // })
+              await this.$refs.info.open('Salvo', 'Atualizado com sucesso!', null)
             } else {
-              // Vue.swal.fire({
-              //   icon: 'error',
-              //   title: 'Error',
-              //   text: 'Falha ao salvar o aluno!'
-              // })
+              await this.$refs.info.open('Salvo', 'Falha ao atualizar o aluno!', null)
             }
           })
         }

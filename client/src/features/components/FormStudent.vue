@@ -57,6 +57,10 @@ export default {
     resource: {
       type: Object,
       default: () => ({})
+    },
+    isEdit: {
+      type: Boolean,
+      default: () => (false)
     }
   },
   data () {

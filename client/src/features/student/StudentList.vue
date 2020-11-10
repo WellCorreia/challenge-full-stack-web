@@ -56,14 +56,10 @@
 
 <script>
 
-// import Vue from 'vue'
 import TitleBar from '@/features/components/TitleBar'
 import ConfirmDialog from '@/components/ConfirmDialog'
 import InfoDialog from '@/components/InfoDialog'
 import { mapActions, mapState } from 'vuex'
-// import VueSweetalert2 from 'vue-sweetalert2'
-
-// Vue.use(VueSweetalert2)
 
 export default {
   name: 'StudentList',
