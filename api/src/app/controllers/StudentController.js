@@ -22,7 +22,7 @@ class StudentController {
 
             return res
                 .status(HTTP.CREATED)
-                .json({ student: response.student, message: response.describe });
+                .json({ student: response.student, message: response.describe, status: response.status });
         } catch (err) {
             return next(err);
         }
@@ -48,7 +48,7 @@ class StudentController {
 
             return res
                 .status(HTTP.OK)
-                .json({ student: response.student, message: response.describe });
+                .json({ student: response.student, message: response.describe, status: response.status });
         } catch (err) {
             return next(err);
         }
@@ -71,7 +71,7 @@ class StudentController {
                 return next(e.get());
             }
 
-            return res.status(response.status).json({ message: response.describe });
+            return res.status(response.status).json({ message: response.describe, status: response.status });
         } catch (err) {
             return next(err);
         }
@@ -95,7 +95,7 @@ class StudentController {
 
             return res
                 .status(HTTP.OK)
-                .json({ student: response.student, message: response.menssage });
+                .json({ student: response.student, message: response.menssage, status: response.status });
         } catch (err) {
             return next(err);
         }
@@ -118,7 +118,7 @@ class StudentController {
 
             return res
                 .status(HTTP.OK)
-                .json({ student: response.student, message: response.menssage });
+                .json({ student: response.student, message: response.menssage, status: response.status });
         } catch (err) {
             return next(err);
         }

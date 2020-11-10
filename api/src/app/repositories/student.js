@@ -30,7 +30,7 @@ const update = async (body) => {
  * Remove a student, receiving the student object
  * @param {*} student 
  */
-const destroy = async (student) => await student.destroy();
+const destroy = async (student) => await student.destroy({force: true});
 
 /**
  * Verify if exist a student with a those property

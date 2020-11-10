@@ -28,6 +28,6 @@ module.exports = {
   deleted: {
     type: 'deleted',
     status: HTTP.OK,
-    describe: 'register deleted with success'
+    describe: 'Register deleted with success'
   }
 }

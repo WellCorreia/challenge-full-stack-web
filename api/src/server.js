@@ -1,9 +1,8 @@
-const express = require('express');
-const routes =  require('./routes');
+const app = require('./app')
+const env = require('./config/env')
 
-const app = express();
+const portServer = env.portServer || 5000
 
-app.use(express.json());
-app.use(routes);
-
-app.listen(5000);
+app.listen(portServer, () => {
+  console.info('\u001b[34;1m' + 'Listening on port ' + portServer)
+})
