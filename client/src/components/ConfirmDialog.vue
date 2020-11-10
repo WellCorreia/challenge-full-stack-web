@@ -46,7 +46,7 @@ export default {
       dialog: false,
       resolve: null,
       labelCancel: 'Cancelar',
-      labelok: 'Ok',
+      labelOk: 'Ok',
       reject: null,
       message: null,
       title: null,

@@ -100,16 +100,17 @@ export default {
     async beforeSave () {
       if (!this.$refs.form.validate()) {
         return false
-      }
-      if (!cpf.isValid(this.resource.cpf)) {
+      } else if (!cpf.isValid(this.resource.cpf)) {
         await this.$refs.info.open('Falha', 'Informe um CPF válido.', null)
         return false
+      } else {
+        return true
       }
-      return true
     },
 
-    save () {
-      if (this.beforeSave()) {
+    async save () {
+      const isValid = await this.beforeSave()
+      if (isValid) {
         if (!this.isEdit) {
           this.ActionCreateStudent(this.resource).then(async () => {
             if (this.is_created.status === 201) {

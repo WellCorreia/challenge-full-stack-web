@@ -31,7 +31,7 @@
           sortBy="name"
         >
 
-          <template v-slot:item.actions="{ item }">
+          <template v-slot:[`item.actions`]="{ item }">
             <v-icon
               middle
               class="mr-2"
@@ -121,16 +121,12 @@ export default {
         'Deseja deletar o registro deste aluno?',
         null,
         null,
-        'Excluir'
+        'Confirmar'
       ).then((response) => {
         if (response) {
           this.ActionDeleteStudent({ id: item.id }).then(async () => {
             if (this.is_deleted.code === undefined) {
-              await this.$refs.info.open(
-                'Excluido',
-                'Registro removido com sucesso!',
-                null
-              )
+              await this.$refs.info.open('Excluido', 'Registro removido com sucesso!', null)
               window.history.go()
             }
           })

@@ -23,7 +23,7 @@
           class="body-2 font-weight-bold"
           outlined
           @click.native="agree"
-          >{{labelOk}}</v-btn
+          >{{ labelOk }}</v-btn
         >
       </v-card-actions>
     </v-card>
@@ -37,7 +37,7 @@ export default {
     return {
       dialog: false,
       resolve: null,
-      labelok: 'Ok',
+      labelOk: 'Ok',
       reject: null,
       message: null,
       title: null,
