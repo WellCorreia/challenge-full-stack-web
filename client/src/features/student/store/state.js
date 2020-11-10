@@ -1,3 +1,7 @@
 export default {
-  students: []
+  students: [],
+  student: {},
+  is_created: {},
+  is_edited: {},
+  is_deleted: {}
 }

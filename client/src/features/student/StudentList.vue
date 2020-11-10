@@ -1,32 +1,46 @@
 <template>
   <v-main>
+    <title-bar title="Consulta de alunos"/>
     <v-container class="py-8 px-6" fluid>
       <v-card>
         <v-card-title>
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
-            label="Search"
+            label="Digite sua busca"
             single-line
             hide-details
           ></v-text-field>
+
+          <v-btn
+            class="ma-2"
+            :loading="searchLoading"
+            :disabled="searchLoading"
+            color="secondary"
+            :to="{ name: 'student-form', params: { id: 'new' }}"
+            >
+            CADASTRAR ALUNO
+          </v-btn>
         </v-card-title>
+
         <v-data-table
           :headers="headers"
           :items="students"
           :search="search"
           :loading="searchLoading"
+          sortBy="name"
         >
+
           <template v-slot:item.actions="{ item }">
             <v-icon
-              small
+              middle
               class="mr-2"
               @click="editItem(item)"
             >
               mdi-pencil
             </v-icon>
             <v-icon
-              small
+              middle
               @click="deleteItem(item)"
             >
               mdi-delete
@@ -40,10 +54,18 @@
 
 <script>
 
+// import Vue from 'vue'
+import TitleBar from '@/features/components/TitleBar'
 import { mapActions, mapState } from 'vuex'
+// import VueSweetalert2 from 'vue-sweetalert2'
+
+// Vue.use(VueSweetalert2)
 
 export default {
-  name: 'Student',
+  name: 'StudentList',
+  components: {
+    TitleBar
+  },
   data () {
     return {
       search: null,
@@ -77,32 +99,36 @@ export default {
     }
   },
   computed: {
-    ...mapState('student', ['students'])
+    ...mapState('student', ['students']),
+    ...mapState('student', ['is_deleted'])
   },
   created () {
-    this.searchLoading = true
-    this.ActionGetStudents().then(() => {
-      this.searchLoading = false
-    })
+    this.ActionGetStudents()
   },
   methods: {
     ...mapActions('student', ['ActionGetStudents']),
+    ...mapActions('student', ['ActionDeleteStudent']),
 
     editItem (item) {
-      this.editedIndex = this.students.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
+      this.$router.push({ name: 'student-form', params: { id: item.id } })
     },
 
     deleteItem (item) {
-      this.editedIndex = this.students.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialogDelete = true
-    },
-
-    deleteItemConfirm () {
-      this.desserts.splice(this.editedIndex, 1)
-      this.closeDelete()
+      // Vue.swal.fire({
+      //   title: 'Deseja excluir o aluno?',
+      //   showDenyButton: true,
+      //   denyButtonText: 'Cancelar',
+      //   confirmButtonText: 'Excluir'
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     this.ActionDeleteStudent({ id: item.id }).then(() => {
+      //       if (this.is_deleted.code === undefined) {
+      //         Vue.swal.fire('Excluido', '', 'success')
+      //         window.history.go()
+      //       }
+      //     })
+      //   }
+      // })
     }
   }
 }
