@@ -1,6 +1,5 @@
 <template>
   <v-app id="inspire">
-    <!-- <nav-bar/> -->
     <v-navigation-drawer permanent app>
         <v-img
         max-height="150"
@@ -15,17 +14,15 @@
         </div>
 
       <v-divider/>
-      <v-list
-        shaped
-      >
+      <v-list shaped>
         <v-list-item-group
           v-model="selectedItem"
-          color="primary"
-        >
+          color="primary">
+
           <v-list-item
             v-for="(item, i) in links"
-            :key="i"
-          >
+            :key="i">
+
             <v-list-item-icon>
               <v-icon middle v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -43,13 +40,9 @@
 </template>
 
 <script>
-// import NavBar from './NavBar.vue'
 
 export default {
   name: 'SideBar',
-  components: {
-    // NavBar
-  },
   data: () => ({
     drawer: false,
     selectedItem: 0,

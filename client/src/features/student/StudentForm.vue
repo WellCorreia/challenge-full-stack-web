@@ -107,7 +107,9 @@ export default {
         return true
       }
     },
-
+    /**
+     * Método responsável por fazer a requisição de persistencia dos dados.
+     */
     async save () {
       const isValid = await this.beforeSave()
       if (isValid) {

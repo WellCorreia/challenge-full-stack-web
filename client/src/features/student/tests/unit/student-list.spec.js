@@ -26,17 +26,18 @@ describe('StudentList', () => {
     vuetify = new Vuetify()
 
     store = new Vuex.Store({
-      state: [
-        'student'
-      ],
-      actions,
+      modules: {
+        student: {
+          state: { student: {} },
+          actions,
+          namespaced: true
+        }
+      }
     })
   })
   
-
   it('renders the component', () => {
     const wrapper = shallowMount(StudentList, { store, localVue })
-
     expect(wrapper.html()).toMatchSnapshot()
   })
 

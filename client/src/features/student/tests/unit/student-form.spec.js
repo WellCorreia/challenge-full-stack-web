@@ -22,7 +22,6 @@ describe('StudentForm', () => {
         }
       }
     })
-
     return {
       wrapper,
       titleBar: () => wrapper.findComponent(TitleBar),
@@ -51,15 +50,19 @@ describe('StudentForm', () => {
 
   it('passes a binded student prop to student form component', () => {
     const { wrapper, formStudent } = build()
+
     wrapper.setData({
       resource: {
         academic_record: '123456',
         name: 'Wellington Correia',
         email: 'wellington@gmail.com',
         cpf: '06012547895'
-      }
+      },
+      isEdit: false
     })
+    
     expect(formStudent().vm.resource).toBe(wrapper.vm.resource)
+    expect(formStudent().vm.isEdit).toBe(wrapper.vm.isEdit)
   })
 
 })
