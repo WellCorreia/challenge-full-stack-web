@@ -64,5 +64,4 @@ describe('StudentForm', () => {
     expect(formStudent().vm.resource).toBe(wrapper.vm.resource)
     expect(formStudent().vm.isEdit).toBe(wrapper.vm.isEdit)
   })
-
 })
