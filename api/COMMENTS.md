@@ -1,20 +1,62 @@
-## Project structure
+## Estrutura do Projeto
 
 ```
 api
-└───__tests__           # Tests unitary and integration
-└───log                 # Files with logs of request
+└───__tests__           # Testes Unitários e de Integração
+└───log                 # Arquivos com logs das requisições
 └───src
-    │   app.js          # App entry point
-    │   server.js       # Run aplication
-    │   routes.js       # Express routes
+    │   app.js          # Ponto de entrada do app
+    │   server.js       # Start da aplicação
+    │   routes.js       # Rotas express
     └───app
-      └───controllers   # All that is required for the endpoints
-      └───models        # Database models
-      └───services      # All the business logic is here
-      └───repositories  # Armazing query builders
-    └───config          # Environment variables and configuration related stuff
-    └───constants       # Are fixed values
-    └───database        # For control have of DB version, table creation, and data entry
-    └───middlewares     # All that is filter for controll
+      └───controllers   # Controllers
+      └───models        # Models
+      └───services      # Services - Lógica de négocio
+      └───repositories  # Repositories - Armazenando construtores de consulta
+    └───config          # Variáveis ​​de ambiente e coisas relacionadas à configuração
+    └───constants       # Valores fixos
+    └───database        # ara controlar a versão do banco de dados, criação de tabela e entrada de dados
+    └───middlewares     # Middlewares de controle
 ```
+
+## Decisão da Arquitetura Utilizada
+
+A dicisão de utilizar dessa arquitetura é pela simplicidade e baixa granularidade da estrutura, o que permite uma construção rápida e bem estruturada com um ORM fazendo a interface com o banco de dados. A separação apenas em controllers, models, services e repositories, permite a facil compreensão e localização de onde deve ser feito cada parte do processo.
+
+## Lista de Bibliotecas de Terceiros Utilizadas
+
+#### `sequelize` - biblioteca da ORM sequelize
+#### `dotenv` - biblioteca que permite carrega variáveis ​​de ambiente de um .envarquivo para o process.env.
+#### `supertest` - biblioteca que fornece uma abstração de alto nível para testar HTTP
+#### `winston` - biblioteca utilizada para armazenamento de logs
+#### `faker` - biblioteca ára a geração de dados ficticios
+#### `jest` - biblioteca de testes
+#### `sqlite3` - biblioteca utilizada para fazer a persistência dos dados de teste
+#### `gerar-cpf` - biblioteca utilizada para geração de CPF nos testes
+#### `helmet` - biblioteca que define cabeçalhos HTTP para as rotas Express.
+#### `nodemon` - biblioteca utilizada para iniciar a API sem necessidade de ficar reiniciando quando ocorre erro
+#### `factory-girl` - biblioteca utilizada para a criação de factories
+
+## O Que Você Melhoraria Se Tivesse Mais Tempo
+Para a proposta, materia a estrutura atual.
+
+## Quais Requisitos Obrigatórios Que Não Foram Entregues
+
+Todos os requisitos foram entregues.
+
+## Run
+
+Para startar a API é necessário rodar os seguintes comandos:
+
+Deve ser feito a intação das bibliotecas usando o comando:
+#### `npm run install` or `yarn install`
+
+Deve ser criado os arquivos .env e .env.test com os comandos:
+#### `cp .env.exemple .env` - Deverá ser configurado apontando para o banco de dados utilizado (por default está o postgres)
+#### `cp .env.test.exemple .env.test`
+
+Para startar a aplicação deverá ser utilizado o commando:
+#### `npm run dev` or `yarn dev`
+
+Os testes podem ser executados usando o comando:
+#### `npm run test` or `yarn test`
