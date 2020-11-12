@@ -29,6 +29,9 @@
           :search="search"
           :loading="searchLoading"
           sortBy="name"
+          :footer-props="{
+              'items-per-page-text':'Alunos por página'
+          }"
         >
 
           <template v-slot:[`item.actions`]="{ item }">
@@ -77,7 +80,7 @@ export default {
           text: 'Registro Acadêmico',
           align: 'left',
           sortable: false,
-          value: 'academic_record'
+          value: 'academic_register'
         },
         {
           text: 'Nome',

@@ -53,7 +53,7 @@ describe('StudentForm', () => {
 
     wrapper.setData({
       resource: {
-        academic_record: '123456',
+        academic_register: '123456',
         name: 'Wellington Correia',
         email: 'wellington@gmail.com',
         cpf: '06012547895'

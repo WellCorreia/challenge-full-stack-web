@@ -16,7 +16,7 @@ describe('mutation', () => {
 
   it('set a new student', () => {
     const student = {
-      academic_record: '123456',
+      academic_register: '123456',
       name: 'Wellington Correia',
       email: 'wellington@gmail.com',
       cpf: '06012547895'
@@ -31,13 +31,13 @@ describe('mutation', () => {
   it('set multiples students', () => {
     const students = [
       {
-        academic_record: '987415',
+        academic_register: '987415',
         name: 'João Carlos Silva',
         email: 'carlos@gmail.com',
         cpf: '11111111111'
       },
       {
-        academic_record: '951357',
+        academic_register: '951357',
         name: 'Juliana Carvalho',
         email: 'juliana@gmail.com',
         cpf: '22222222222'
@@ -54,7 +54,7 @@ describe('mutation', () => {
     const students = [
       {
         id: 1,
-        academic_record: '987415',
+        academic_register: '987415',
         name: 'João Carlos Silva',
         email: 'carlos@gmail.com',
         cpf: '33333333333'
@@ -71,7 +71,7 @@ describe('mutation', () => {
     const students = [
       {
         id: 1,
-        academic_record: '987415',
+        academic_register: '987415',
         name: 'João Carlos Silva',
         email: 'carlos@gmail.com',
         cpf: '33333333333'
@@ -87,7 +87,7 @@ describe('mutation', () => {
   it('set student deleted', () => {
     const students = [
       {
-        academic_record: '987415',
+        academic_register: '987415',
         name: 'João Carlos Silva',
         email: 'carlos@gmail.com',
         cpf: '33333333333'

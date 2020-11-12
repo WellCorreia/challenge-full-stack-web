@@ -26,7 +26,7 @@
     <v-layout row>
       <v-flex xs6 sm6 md6>
         <v-text-field
-          v-model="resource.academic_record"
+          v-model="resource.academic_register"
           :rules="academicRecordRules"
           label="Registro Acadêmico"
           :readonly="isEdit"

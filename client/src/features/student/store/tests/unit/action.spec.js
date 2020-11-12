@@ -16,7 +16,7 @@ describe('Actions', () => {
   beforeEach(() => {
     state = { ...initialState }
     student = {
-      academic_record: generateCpf(),
+      academic_register: generateCpf(),
       name: faker.name.findName(),
       email: faker.internet.email(),
       cpf: generateCpf(),
