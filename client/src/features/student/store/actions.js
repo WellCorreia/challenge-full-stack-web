@@ -2,7 +2,7 @@ import * as types from './mutation-types'
 import services from '@/http'
 
 /**
- * Método responsável por fazer a requisição para retornar todos os alunos.
+ * Method responsible for making the request to return all students.
  * @param {*} commit
  */
 export const ActionGetStudents = ({ commit }) => {
@@ -14,7 +14,7 @@ export const ActionGetStudents = ({ commit }) => {
 }
 
 /**
- * Método responsável por fazer a requisição para deletar um aluno.
+ * Method responsible for making the request to delete a student.
  * @param {*} commit
  * @param {*} payload
  */
@@ -27,7 +27,7 @@ export const ActionDeleteStudent = ({ commit }, payload) => {
 }
 
 /**
- * Método responsável por fazer a requisição para retornar um student
+ * Method responsible for making the request to return a student
  * @param {*} commit
  * @param {*} payload
  */
@@ -40,7 +40,7 @@ export const ActionGetStudent = ({ commit }, payload) => {
 }
 
 /**
- * Método responsável por fazer a requisição para editar um aluno.
+ * Method responsible for making the request to edit a student.
  * @param {*} commit
  * @param {*} payload
  */
@@ -53,7 +53,7 @@ export const ActionEditStudent = ({ commit }, payload) => {
 }
 
 /**
- * Método responsável por fazer a requisição para cadastro do aluno.
+ * Method responsible for making the request for student registration.
  * @param {*} commit
  * @param {*} payload
  */
