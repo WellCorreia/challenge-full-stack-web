@@ -66,6 +66,8 @@ Caso deseje preencher o banco de dados com dados iniciais deverá ser executado:
 
 Para startar a aplicação deverá ser utilizado o commando:
 #### `npm run dev` or `yarn dev`
+ou
+#### `npm run start` or `yarn start`
 
 Os testes podem ser executados usando o comando:
 #### `npm run test` or `yarn test`
