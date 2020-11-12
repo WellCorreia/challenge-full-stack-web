@@ -17,11 +17,6 @@ module.exports = {
     port: process.env.DB_PORT
   },
   test: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    pass: process.env.DB_PASS,
-    db: process.env.DB_DATABASE_TEST,
-    dialect: process.env.DB_DIALECT || 'postgres',
-    port: process.env.DB_PORT
-  },
+    storage: './__tests__/database.sqlite'
+  }
 };
