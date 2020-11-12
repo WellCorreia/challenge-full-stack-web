@@ -8,7 +8,7 @@ const { Student } = require('../app/models');
  * Factory Student
  */
 factory.define('Student', Student, {
-  academic_record: generateCpf(),
+  academic_register: generateCpf(),
   name: faker.name.findName(),
   email: faker.internet.email(),
   cpf: generateCpf(),

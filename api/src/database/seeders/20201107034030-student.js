@@ -8,7 +8,7 @@ module.exports = {
       cpf: generateCpf(),
       name: await faker.name.findName(),
       email: await faker.internet.email(),
-      academic_record: generateCpf(),
+      academic_register: generateCpf(),
     }], {});
   },
 

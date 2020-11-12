@@ -9,7 +9,7 @@ describe('Unit > Student', () => {
 
   it('student created', async () => {
     const newStudent = await factory.create('Student');
-    const student = await StudentRepository.findStudent(newStudent.cpf, newStudent.email, newStudent.academic_record);
+    const student = await StudentRepository.findStudent(newStudent.cpf, newStudent.email, newStudent.academic_register);
     const exist = (typeof student === 'object' && student !== null);
     expect(exist).toBe(true)
   })

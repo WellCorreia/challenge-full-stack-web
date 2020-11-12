@@ -36,15 +36,15 @@ const destroy = async (student) => await student.destroy();
  * Verify if exist a student with a those property
  * @param {*} cpf 
  * @param {*} email 
- * @param {*} academic_record 
+ * @param {*} academic_register 
  */
-const findStudent = async (cpf, email, academic_record) => {
+const findStudent = async (cpf, email, academic_register) => {
     return await Student.findOne({
         where: {
             [Op.or]: [
                 { cpf },
                 { email },
-                { academic_record },
+                { academic_register },
             ]
         }
     })
