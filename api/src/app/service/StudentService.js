@@ -13,7 +13,7 @@ class StudentService {
    */
   async store(body) {
     
-    const student = await StudentRepository.findStudent(body.cpf, body.email, body.academic_record);
+    const student = await StudentRepository.findStudent(body.cpf, body.email, body.academic_register);
 
     if (!student) {
       return {

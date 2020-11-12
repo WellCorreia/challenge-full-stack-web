@@ -12,7 +12,7 @@ describe('Student > StudentController.js', () => {
       const response = await request(app)
         .post('/api/student')
         .send({
-          academic_record: generateCpf(),
+          academic_register: generateCpf(),
           name: faker.name.findName(),
           email: faker.internet.email(),
           cpf: generateCpf(),
@@ -28,7 +28,7 @@ describe('Student > StudentController.js', () => {
       const response = await request(app)
         .post('/api/student')
         .send({
-          academic_record: generateCpf(),
+          academic_register: generateCpf(),
           name: faker.name.findName(),
           email: faker.internet.email(),
           cpf: student.cpf,
@@ -39,13 +39,13 @@ describe('Student > StudentController.js', () => {
 
     it('Already exist a student with Academic Record', async () => {
       const student = await factory.create('Student', {
-        academic_record: generateCpf(),
+        academic_register: generateCpf(),
         cpf: generateCpf(),
       });
       const response = await request(app)
         .post('/api/student')
         .send({
-          academic_record: student.academic_record,
+          academic_register: student.academic_register,
           name: faker.name.findName(),
           email: faker.internet.email(),
           cpf: generateCpf(),
@@ -95,7 +95,7 @@ describe('Student > StudentController.js', () => {
   describe('Get', () => {
     it('Student successfully found', async () => {
       const student = await factory.create('Student', {
-        // academic_record: '657498',
+        // academic_register: '657498',
         cpf: generateCpf(),
       });
 

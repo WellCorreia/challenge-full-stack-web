@@ -10,7 +10,7 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      academic_record: {
+      academic_register: {
         type: Sequelize.STRING,
         allowNull: false,
       },
