@@ -15,7 +15,7 @@ api
       └───repositories  # Repositories - Armazenando construtores de consulta
     └───config          # Variáveis ​​de ambiente e coisas relacionadas à configuração
     └───constants       # Valores fixos
-    └───database        # ara controlar a versão do banco de dados, criação de tabela e entrada de dados
+    └───database        # Controla a versão do banco de dados, criação de tabela e entrada de dados
     └───middlewares     # Middlewares de controle
 ```
 
@@ -48,12 +48,21 @@ Todos os requisitos foram entregues.
 
 Para startar a API é necessário rodar os seguintes comandos:
 
-Deve ser feito a intação das bibliotecas usando o comando:
+Deve ser feito a instalação das bibliotecas usando o comando:
 #### `npm run install` or `yarn install`
 
 Deve ser criado os arquivos .env e .env.test com os comandos:
 #### `cp .env.exemple .env` - Deverá ser configurado apontando para o banco de dados utilizado (por default está o postgres)
 #### `cp .env.test.exemple .env.test`
+
+Para para criar o banco de dados deverá ser executado o comando:
+#### `npm run sequelize db:create` or `yarn sequelize db:create`
+
+Para para criar as tabelas deverá ser executado o comando:
+#### `npm run sequelize db:migrate` or `yarn sequelize db:migrate`
+
+Caso deseje preencher o banco de dados com dados iniciais deverá ser executado:
+#### `npm run sequelize db:seed:all` or `yarn sequelize db:seed:all`
 
 Para startar a aplicação deverá ser utilizado o commando:
 #### `npm run dev` or `yarn dev`
