@@ -21,7 +21,7 @@ api
 
 ## Decisão da Arquitetura Utilizada
 
-A dicisão de utilizar dessa arquitetura é pela simplicidade e baixa granularidade da estrutura, o que permite uma construção rápida e bem estruturada com um ORM fazendo a interface com o banco de dados. A separação apenas em controllers, models, services e repositories, permite a facil compreensão e localização de onde deve ser feito cada parte do processo.
+A decisão de utilizar dessa arquitetura é pela simplicidade e baixa granularidade da estrutura, o que permite uma construção rápida e bem estruturada com um ORM fazendo a interface com o banco de dados. A separação apenas em controllers, models, services e repositories, permite a facil compreensão e localização de onde deve ser feito cada parte do processo.
 
 ## Lista de Bibliotecas de Terceiros Utilizadas
 
@@ -52,8 +52,8 @@ Deve ser feito a instalação das bibliotecas usando o comando:
 #### `npm run install` or `yarn install`
 
 Deve ser criado os arquivos .env e .env.test com os comandos:
-#### `cp .env.exemple .env` - Deverá ser configurado apontando para o banco de dados utilizado (por default está o postgres)
-#### `cp .env.test.exemple .env.test`
+#### `cp .env.example .env` - Deverá ser configurado apontando para o banco de dados utilizado (por default está o postgres)
+#### `cp .env.test.example .env.test`
 
 Para para criar o banco de dados deverá ser executado o comando:
 #### `npm run sequelize db:create` or `yarn sequelize db:create`

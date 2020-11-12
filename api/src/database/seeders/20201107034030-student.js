@@ -1,14 +1,16 @@
 'use strict';
 const faker = require('faker');
-const generateCpf = require('gerar-cpf');
+const { cpf } = require('cpf-cnpj-validator'); 
 
 module.exports = {
   up: async (queryInterface) => {
+    let numCpf = cpf.generate();
+    numCpf = cpf.format(numCpf);
     await queryInterface.bulkInsert('students', [{
-      cpf: generateCpf(),
+      cpf: numCpf,
       name: await faker.name.findName(),
       email: await faker.internet.email(),
-      academic_register: generateCpf(),
+      academic_register: Math.floor(Math.random() * 999999) + 111111,
     }], {});
   },
 
